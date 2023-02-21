@@ -17,11 +17,15 @@ playerX = 0
 playerY = 0
 x = 0
 y = 0
+
+
 while True:
     #import player position
     f = open("player.txt", "r")
     playerX = f.readline()
+    playerX = playerX.strip()
     playerY = f.readline()
+    playerY = playerY.strip()
     f.close()
 
     print("PLAYERX:", playerX)
