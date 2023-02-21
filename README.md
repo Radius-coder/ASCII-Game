@@ -21,7 +21,16 @@ Player has 3 lives. They lose one life when the enemy is in the same position.
 
 Game ends when player has 0 lives.
 
+## To be added
+Option for player to change grid size.
 
+Adding obstacles like walls which are randomly generated.
+
+Adding projectiles the player can shoot or has to avoid.
+
+Adding multiple levels. - This will be done by checking when the user goes past the X coordinate of the grid. At that point a new grid is generated to represent a new level.
+
+## Changlog
 ### Update 0.2
 Added 2 new enemies and their collision.
 
