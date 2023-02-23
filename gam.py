@@ -5,9 +5,9 @@ import re
 
 #map
 w = ''
-array = (40, 70)
-gridX = array[1]
-gridY = array[0]
+gridX = int(input("Enter the max value on the X axis: "))
+gridY = int(input("Enter the max value on the Y axis: "))
+array = (gridY, gridX)
 #send grid to file for editing in input.py
 f = open("grid.txt", "w")
 f.write(str(gridX))
@@ -15,21 +15,54 @@ f.write("\n")
 f.write(str(gridY))
 f.close()
 
+
+#walls
+f = open("walls.txt", "w")
+f.write('')
+f.close()
+
+wall = '□'
+wallX = []
+wallY = []
+
+i = 0
+while i < 10:
+    f = open("walls.txt", "a")
+    x = random.randint(0,gridX)
+    wallX.append(x)
+    y = random.randint(0, gridY)
+    wallY.append(y)
+    f.write(str(x))
+    f.write("\n")
+    f.write(str(y))
+    f.write("\n")
+    i += 1
+    f.close()
+    
+
+
+
+
 #player
 player = 'P'
 life = 3
-
+#reset player position
+f = open("player.txt", "w")
+f.write('0')
+f.write("\n")
+f.write('0')
+f.close()
 
 #enemy
 enemy = 'O'
-enemyX = random.randint(0,5)
-enemyY = random.randint(0,5)
+enemyX = random.randint(0,gridX)
+enemyY = random.randint(0,gridY)
 enemy2 = 'B'
-enemy2X = random.randint(5,15)
-enemy2Y = random.randint(5,15)
+enemy2X = random.randint(5,gridX)
+enemy2Y = random.randint(5,gridY)
 enemy3 = '@'
-enemy3X = random.randint(1,15)
-enemy3Y = random.randint(1,15)
+enemy3X = random.randint(1,gridX)
+enemy3Y = random.randint(1,gridY)
 
 while True:
 
@@ -90,7 +123,7 @@ while True:
     elif enemyX == playerX:
         if enemyY == playerY:
             print("Hit. -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -102,7 +135,7 @@ while True:
     elif enemyY == playerY:
         if enemyX == playerX:
             print("Hit -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -117,7 +150,7 @@ while True:
     elif enemy2X == playerX:
         if enemy2Y == playerY:
             print("Hit. -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -129,7 +162,7 @@ while True:
     elif enemy2Y == playerY:
         if enemy2X == playerX:
             print("Hit -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -143,7 +176,7 @@ while True:
     elif enemy3X == playerX:
         if enemy3Y == playerY:
             print("Hit. -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -155,7 +188,7 @@ while True:
     elif enemy3Y == playerY:
         if enemy3X == playerX:
             print("Hit -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -177,7 +210,25 @@ while True:
         if enemy3Y == enemyY or enemy3Y == enemy2Y:
            enemy3X -= 2
            enemy3Y -= 2
-            
+
+
+    #Enemy colliding with walls
+        if enemyX in wallX:
+            if enemyY in wallY:
+                print("Enemy colliding with wall")
+                enemyX -= 1
+                enemyY -= 1
+        elif enemy2X in wallX:
+            if enemy2Y in wallY:
+                print("Enemy2 colliding with wall")
+                enemy2X += 1
+                enemy2Y += 1
+        elif enemy3X in wallX:
+            if enemy3Y in wallY:
+                print("Enemy3 colliding with wall")
+                enemy3X -= 2
+                enemy3Y -= 2
+                
     #Update frame
     for y in range(gridY):
         for x in range(gridX):
@@ -189,11 +240,13 @@ while True:
                 w = w + enemy2
             elif enemy3X == x and enemy3Y == y:
                 w = w + enemy3
+            elif x in wallX and y in wallY:
+                w = w + wall
             else:
                 w = w + "x"
         print(w)
         w = ''
-    time.sleep(0.2)
+    time.sleep(0.5)
 
 
 
