@@ -1,5 +1,5 @@
 # ASCII-Game
-This project uses text to create a 2d game. So far I have created a 2d grid that includes a player and an enemy. The player can move around while the enemy chases them.
+This project uses text to create a 2d game. So far I have created a 2d grid that includes a player and an enemy. The player can move around while the enemy chases them. There are also walls. The player cannot go through walls.
 
 ![image](https://user-images.githubusercontent.com/67561957/221170215-dbd2dc61-2422-4499-b3d4-3553b78dd0e6.png)
 
