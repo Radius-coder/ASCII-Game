@@ -22,17 +22,23 @@ Player has 3 lives. They lose one life when the enemy is in the same position.
 Game ends when player has 0 lives.
 
 ## To be added
-Adding walls which are randomly generated.
+Let player select amount of walls or, base wall count on grid size.
 
 Adding projectiles the player can shoot or has to avoid.
-
-Adding multiple levels. - This will be done by checking when the user goes past the X coordinate of the grid. At that point a new grid is generated to represent a new level.
 
 Need to add collision between enemies and walls.
 
 Need to test and fix player collisions with walls.
 
+
+Adding multiple levels. - This will be done by checking when the user goes past the X coordinate of the grid. At that point a new grid is generated to represent a new level.
+
 ## Changlog
+### Update 0.4
+Fixed walls so they spawn in correctly.
+
+Fixed collision with walls, however still needs improved as player can walk into wall before being sent back.
+
 ### Update 0.3
 Added Walls and player collision with walls
 
