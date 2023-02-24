@@ -39,6 +39,8 @@ Fixed walls so they spawn in correctly.
 
 Fixed collision with walls, however still needs improved as player can walk into wall before being sent back.
 
+Changed board spaces from an 'x' to a blank space.
+
 ### Update 0.3
 Added Walls and player collision with walls
 
