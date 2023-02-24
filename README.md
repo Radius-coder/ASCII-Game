@@ -8,9 +8,9 @@ On the left you can see 'input.py'. This program is tracking and moving the play
 On the right you can see 'gam.py' This program updates the enemy and player positions on to the grid. It gets the player position by reading the text file created by 'input.py' and using that position to update the board. I have done it this way so the player can move without pressing enter after each movement and the board can update even when the player does not move.
 
 ## To run
-First run input.py. This program takes the movement inputs and updates gam.py without the need for the user to press enter after every input.
+First, run gam.py. This program shows the grid, player and enemy. The enemy position is updated here. Select your grid size and when its loaded go to second program.
 
-Secondly run gam.py. This program shows the grid, player and enemy. The enemy position is updated here.
+Secondly, run input.py. This program takes the movement inputs and updates gam.py without the need for the user to press enter after every input. This program will only launch without error once gam.py has created a board with walls and enemies.
 
 ## Features
 Move player with WASD.
