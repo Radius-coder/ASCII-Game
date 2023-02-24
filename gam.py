@@ -70,10 +70,12 @@ enemy3X = random.randint(1,gridX)
 enemy3Y = random.randint(1,gridY)
 print("loading enemies...")
 print("loading walls...")
-while True:
 
-    
-    #Get player position
+print("WALLX: ", wallX)
+print("WALLY: ", wallY)
+
+while True:
+    #Get/Set player position
     f = open("player.txt", "r")
     playerX = f.readline()
     playerX = playerX.strip()
@@ -111,21 +113,16 @@ while True:
     elif playerY >= gridX:
         playerY -= 1
         
-    #track entity positions
-    print("PLAYERX: ", playerX)
-    print("PLAYERY: ", playerY)
-    print("ENEMYX: ",enemyX)
-    print("ENEMYY: ",enemyY)
-    print("ENEMY2X: ",enemy2X)
-    print("ENEMY2Y: ",enemy2Y)
-    print("ENEMY3X: ",enemy3X)
-    print("ENEMY3Y: ",enemy3Y)
+    #Track entity positions
+    print("PLAYER POSITION: (",playerX,', ',playerY,")")
+    print("ENEMY 1 POSITION: (",enemyX,', ' ,enemyY,")")
+    print("ENEMY 2 POSITION: (",enemy2X,', ' ,enemy2Y,")")
+    print("ENEMY 3 POSITION: (",enemy3X,', ' ,enemy3Y,")")
+
     
     #Move enemy and detect collision
     if enemyX < playerX:
-        print("EnemyX is behind playerX, move right")
         enemyX += 1
-        print(enemyX)
     elif enemyX == playerX:
         if enemyY == playerY:
             print("Hit. -1 life.")
@@ -182,7 +179,7 @@ while True:
     elif enemy3X == playerX:
         if enemy3Y == playerY:
             print("Hit. -1 life.")
-            life -= 1
+            #life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -235,10 +232,7 @@ while True:
                 enemy3X -= 2
                 enemy3Y -= 2
 
-
-
-    print("WALLX: ", wallX)
-    print("WALLY: ", wallY)
+    
     #Update frame
     for y in range(gridY):
         for x in range(gridX):
@@ -263,14 +257,15 @@ while True:
                             i += 1
                             #no wall in current gridX
                             if i == 50:
-                                w = w + 'x'
+                                w = w + ' '
                     else:
                         #no wall in current grid x and y
                         i += 1
                         if i == 50:
-                            w = w + 'x'
+                            w = w + ' '
         print(w)
         w = ''
+    #Time is framerate (0.5 = half a second)
     time.sleep(0.5)
 
 
