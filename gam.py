@@ -74,6 +74,14 @@ print("loading walls...")
 print("WALLX: ", wallX)
 print("WALLY: ", wallY)
 
+print("Starting in 3...")
+time.sleep(1)
+print("Starting in 2...")
+time.sleep(1)
+print("Starting in 1...")
+time.sleep(1)
+print("GO!")
+time.sleep(1)
 while True:
     #Get/Set player position
     f = open("player.txt", "r")
@@ -266,7 +274,7 @@ while True:
         print(w)
         w = ''
     #Time is framerate (0.5 = half a second)
-    time.sleep(0.5)
+    time.sleep(0.3)
 
 
 

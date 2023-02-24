@@ -53,12 +53,10 @@ while True:
     playerY = playerY.strip()
     f.close()
 
-    print("PLAYERX:", playerX)
-    print("PLAYERY: ", playerY)
-
+    print("PLAYER Position: (", playerX, ',', playerY,')')
+    
     #get key press
     move = ord(getch())
-    print(move)
     playerX = int(playerX)
     playerY = int(playerY)
 
@@ -66,7 +64,6 @@ while True:
     if(move == 119):
         print("W pressed")
         while i < len(wallX):
-            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
             if wallY[i] == playerY:
                 if wallX[i] == playerX:
                     print("Wall hit")
@@ -89,7 +86,6 @@ while True:
     elif(move == 97):
         print("A pressed")
         while i < len(wallX):
-            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
             if wallX[i] == playerX:
                 if wallY[i] == playerY:
                     print("Wall hit")
@@ -111,7 +107,6 @@ while True:
     elif(move == 115):
         print("S Pressed")
         while i < len(wallX):
-            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
             if wallY[i] == playerY:
                 if wallX[i] == playerX:
                     print("Wall hit")
@@ -134,7 +129,6 @@ while True:
     elif(move == 100):
         print("D Pressed")
         while i < len(wallX):
-            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
             if wallX[i] == playerX:
                 if wallY[i] == playerY:
                     print("Wall hit")
@@ -161,5 +155,5 @@ while True:
     f.close()
     f = open("player.txt", "r")
     for x in f:
-        print("new",x)
+        print("Players new X coord",x)
     f.close()
