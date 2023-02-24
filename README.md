@@ -1,7 +1,7 @@
 # ASCII-Game
 This project uses text to create a 2d game. So far I have created a 2d grid that includes a player (P) and 3 enemies (O, B, @). The player can move around while the enemies chase them. There are also walls (□). The player cannot go through walls.
 
-![image](https://user-images.githubusercontent.com/67561957/221170215-dbd2dc61-2422-4499-b3d4-3553b78dd0e6.png)
+<img width="960" alt="Untitled" src="https://user-images.githubusercontent.com/67561957/221177847-23be14b3-d978-495c-ab32-00bda88491af.png">
 
 On the left you can see 'input.py'. This program is tracking and moving the player's location. It does this using 'getch' which reads keyboard inputs. The input is translated into a movement and the new position is saved to a text file.
 
