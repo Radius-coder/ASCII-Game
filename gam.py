@@ -129,7 +129,7 @@ while True:
     elif enemyX == playerX:
         if enemyY == playerY:
             print("Hit. -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -141,7 +141,7 @@ while True:
     elif enemyY == playerY:
         if enemyX == playerX:
             print("Hit -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -156,7 +156,7 @@ while True:
     elif enemy2X == playerX:
         if enemy2Y == playerY:
             print("Hit. -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -168,7 +168,7 @@ while True:
     elif enemy2Y == playerY:
         if enemy2X == playerX:
             print("Hit -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -182,7 +182,7 @@ while True:
     elif enemy3X == playerX:
         if enemy3Y == playerY:
             print("Hit. -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
@@ -194,7 +194,7 @@ while True:
     elif enemy3Y == playerY:
         if enemy3X == playerX:
             print("Hit -1 life.")
-            #life -= 1
+            life -= 1
             if life <= 0:
                 print("GAME OVER!")
                 break
