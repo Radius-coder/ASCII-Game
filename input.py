@@ -16,17 +16,17 @@ wallX = []
 wallY = []
 f = open("walls.txt" , "r")
 i = 0
-while i < 10:
-    line = f.readline()
-    line = line.strip()
-    wallY.append(int(line))
-    i += 1
-
-i=0
-while i < 10:
+while i < 50:
     line = f.readline()
     line = line.strip()
     wallX.append(int(line))
+    i += 1
+
+i=0
+while i < 50:
+    line = f.readline()
+    line = line.strip()
+    wallY.append(int(line))
     i += 1
 
 print(wallX)
@@ -39,7 +39,12 @@ x = 0
 y = 0
 
 
+
+
 while True:
+    #track if wall hit to stop movement if hit
+    wallHit = False
+    i = 0
     #import player position
     f = open("player.txt", "r")
     playerX = f.readline()
@@ -59,43 +64,94 @@ while True:
 
     #movement and boundaries
     if(move == 119):
-        if playerY <= 0:
-            print("player too high")
-            playerY += 1
-        elif playerY in wallY:
-            if playerX in wallX:
-               print(playerY,",", playerX)
-               playerY += 1
-        else:
-            playerY -= 1
+        print("W pressed")
+        while i < len(wallX):
+            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
+            if wallY[i] == playerY:
+                if wallX[i] == playerX:
+                    print("Wall hit")
+                    playerY += 1
+                    wallHit = True
+                    i += 1
+                else:
+                    i += 1
+            else:
+                i += 1
+                
+        if wallHit == False:        
+            if playerY <= 0:
+                print("player too high")
+                playerY += 1
+            else:
+                playerY -= 1
+                print("Moved up")
+            
     elif(move == 97):
-        if playerX <= 0:
-            playerX += 1
-        elif playerX in wallX:
-            if playerY in wallY:
-               print(playerY,",", playerX)
-               playerX += 1
-        else:
-            playerX -= 1
+        print("A pressed")
+        while i < len(wallX):
+            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
+            if wallX[i] == playerX:
+                if wallY[i] == playerY:
+                    print("Wall hit")
+                    playerX += 1
+                    wallHit = True
+                    i += 1
+                else:
+                    i += 1
+            else:
+                i += 1
+
+        if wallHit == False:
+            if playerX <= 0:
+                playerX += 1
+            else:
+                print("moved left")
+                playerX -= 1
+            
     elif(move == 115):
-        print("PLAYER Y", playerY, "WALL Y ", wallY)
-        if playerY >= int(gridY):
-            print("player too low")
-            playerY -= 1
-        elif playerY in wallY:
-            if playerX in wallX:
-               print(playerY,",", playerX)
-        else:
-            playerY += 1
+        print("S Pressed")
+        while i < len(wallX):
+            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
+            if wallY[i] == playerY:
+                if wallX[i] == playerX:
+                    print("Wall hit")
+                    playerY -= 1
+                    wallHit = True
+                    i += 1
+                else:
+                    i += 1
+            else:
+                i += 1
+                
+        if wallHit == False:
+            if playerY >= int(gridY):
+                print("player too low")
+                playerY -= 1
+            else:
+                print("Moved down")
+                playerY += 1
+            
     elif(move == 100):
-        if playerX >= int(gridX):
-            playerX -= 1
-        elif playerX in wallX:
-            if playerY in wallY:
-               print(playerY,",", playerX)
-               playerX -= 1
-        else:
-            playerX += 1
+        print("D Pressed")
+        while i < len(wallX):
+            print("WALLX: ", wallX[i], "WALLY: ", wallY[i])
+            if wallX[i] == playerX:
+                if wallY[i] == playerY:
+                    print("Wall hit")
+                    playerX -= 1
+                    wallHit = True
+                    i += 1
+                else:
+                    i += 1
+            else:
+                i += 1
+                
+        if wallHit == False:
+            if playerX >= int(gridX):
+                playerX -= 1
+            else:
+                print("moved right")
+                playerX += 1
             
     #save player position
     f = open("player.txt", "w")

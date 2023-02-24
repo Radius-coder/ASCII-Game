@@ -7,6 +7,7 @@ import re
 w = ''
 gridX = int(input("Enter the max value on the X axis: "))
 gridY = int(input("Enter the max value on the Y axis: "))
+print("loading grid...")
 array = (gridY, gridX)
 #send grid to file for editing in input.py
 f = open("grid.txt", "w")
@@ -26,20 +27,24 @@ wallX = []
 wallY = []
 
 i = 0
-while i < 10:
+while i < 50:
     f = open("walls.txt", "a")
     x = random.randint(0,gridX)
     wallX.append(x)
-    y = random.randint(0, gridY)
-    wallY.append(y)
     f.write(str(x))
-    f.write("\n")
-    f.write(str(y))
     f.write("\n")
     i += 1
     f.close()
     
-
+i = 0
+while i < 50:
+    f = open("walls.txt", "a")
+    y = random.randint(0, gridY)
+    wallY.append(y)
+    f.write(str(y))
+    f.write("\n")
+    i += 1
+    f.close()
 
 
 
@@ -52,7 +57,7 @@ f.write('0')
 f.write("\n")
 f.write('0')
 f.close()
-
+print("loading player...")
 #enemy
 enemy = 'O'
 enemyX = random.randint(0,gridX)
@@ -63,7 +68,8 @@ enemy2Y = random.randint(5,gridY)
 enemy3 = '@'
 enemy3X = random.randint(1,gridX)
 enemy3Y = random.randint(1,gridY)
-
+print("loading enemies...")
+print("loading walls...")
 while True:
 
     
@@ -212,7 +218,7 @@ while True:
            enemy3Y -= 2
 
 
-    #Enemy colliding with walls
+    #Enemy colliding with walls (needs changing)
         if enemyX in wallX:
             if enemyY in wallY:
                 print("Enemy colliding with wall")
@@ -228,7 +234,11 @@ while True:
                 print("Enemy3 colliding with wall")
                 enemy3X -= 2
                 enemy3Y -= 2
-                
+
+
+
+    print("WALLX: ", wallX)
+    print("WALLY: ", wallY)
     #Update frame
     for y in range(gridY):
         for x in range(gridX):
@@ -240,10 +250,25 @@ while True:
                 w = w + enemy2
             elif enemy3X == x and enemy3Y == y:
                 w = w + enemy3
-            elif x in wallX and y in wallY:
-                w = w + wall
-            else:
-                w = w + "x"
+            else: #if not enemy or player then its wall or normal piece
+                i = 0
+                while i < len(wallX):
+                    #if current grid Y is the same as the wallY
+                    if wallY[i] == y:
+                        #And the current grid X is the same as the wallX
+                        if x == wallX[i]:
+                            w = w + wall
+                            i = 50
+                        else: #if not matching wallX 
+                            i += 1
+                            #no wall in current gridX
+                            if i == 50:
+                                w = w + 'x'
+                    else:
+                        #no wall in current grid x and y
+                        i += 1
+                        if i == 50:
+                            w = w + 'x'
         print(w)
         w = ''
     time.sleep(0.5)
