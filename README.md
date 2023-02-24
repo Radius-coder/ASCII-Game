@@ -30,6 +30,7 @@ Need to add collision between enemies and walls.
 
 Need to test and fix player collisions with walls.
 
+Need to fix outputs on 'input.py' so things are more clear
 
 Adding multiple levels. - This will be done by checking when the user goes past the X coordinate of the grid. At that point a new grid is generated to represent a new level.
 
